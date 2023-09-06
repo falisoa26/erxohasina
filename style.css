@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.card_container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 20px 50px;
+}
+
+.card {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+
+}
+
+.card:hover {
+    animation: animate 0.9s ease-in-out;
+}
+
+figure {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+figure>img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.body_card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.card:hover {
+    cursor: pointer;
+    background-color: #a4a4a4;
+    color: white;
+}
+
+.container_profil {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 20px 50px;
+}
+
+@media (max-width:800px) {
+    .card_container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width:590px) {
+    .card_container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+
+.card_profil {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 70px;
+}
+
+.card_profil img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    background-color: #d9d9d9;
+}
+
+.info {
+    grid-column: span 3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 50px 30px;
+}
+
+.btn-retur {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    padding: 10px;
+    background-color: rgb(0, 157, 255);
+    cursor: pointer;
+    font-family: sans-serif;
+    color: white;
+}
+
+.card_container p,
+.card_container figure,
+.card_container img,
+.card_container .body_card {
+    pointer-events: none;
+}
+
+@keyframes animate {
+    0% {
+        transform: scale(1.01);
+    }
+
+    25% {
+        transform: scale(0.98);
+    }
+
+    50% {
+        transform: scale(1.01);
+    }
+
+    75% {
+        transform: scale(0.9.98);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
