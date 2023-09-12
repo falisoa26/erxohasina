@@ -23,8 +23,33 @@
     gap: 30px;
     background-color: #f2f2f2;
     border-radius: 10px;
+    position: relative;
 
 }
+
+.btn_edit {
+    position: absolute;
+    background-color: rgb(8, 215, 91);
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 5px;
+    border-radius: 50px;
+    right: 5px;
+    visibility: hidden;
+}
+
+.btn_edit.hover {
+    visibility: visible;
+}
+
+.btn_edit svg {
+    fill: rgb(0, 0, 0);
+}
+
+
 
 .card:hover {
     animation: animate 0.9s ease-in-out;

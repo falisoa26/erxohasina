@@ -1,5 +1,6 @@
 import './style.css'
-import { creatButtonSA, fetchUser, fetchUsers, postUser } from './lib/crud';
+import { creatButtonSA, fetchUser, fetchUsers, postUser } from './lib/post';
+import { put } from './lib/updatUser';
 const app = document.querySelector("#app");
 let name = "";
 let email = "";
@@ -37,6 +38,17 @@ const creatCard = async () => {
     card_user.classList.add("card");
     card_user.id = allUsers[i].id;
     cardContainer.appendChild(card_user);
+
+    const btnEdit = document.createElement("div");
+    btnEdit.id = allUsers[i].id;
+    btnEdit.classList.add("btn_edit");
+    btnEdit.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+  <path d="M13.5 6.5l4 4" />
+</svg>`;
+    card_user.appendChild(btnEdit);
+
     const card_avatar = document.createElement("figure");
     card_user.appendChild(card_avatar);
     const imageAvatar = document.createElement("img");
@@ -61,7 +73,18 @@ const creatCard = async () => {
       app.removeChild(cardContainer);
       const user = await fetchUser(e.target.id);
       const profil = await userProfil(user);
-    })
+    });
+    card_user.addEventListener('mouseover', () => {
+      btnEdit.classList.add("hover");
+    });
+    card_user.addEventListener('mouseleave', () => {
+      btnEdit.classList.remove("hover");
+    });
+    btnEdit.addEventListener('click', (e) => {
+      e.stopPropagation();
+      console.log(btnEdit.id);
+    });
+
   }
   creatButton()
 }
@@ -127,18 +150,21 @@ function addData() {
   inputName.classList.add("input_name")
   inputName.setAttribute("type", "text");
   inputName.setAttribute("placeholder", "name");
+  inputName.setAttribute("required", "required");
   forme.appendChild(inputName)
 
   const inputEmail = document.createElement("input");
   inputEmail.classList.add("input_email")
   inputEmail.setAttribute("type", "email");
   inputEmail.setAttribute("placeholder", "email");
+  inputEmail.setAttribute("required", "required");
   forme.appendChild(inputEmail)
 
   const inputAvatar = document.createElement("input");
   inputAvatar.classList.add("input_avata")
   inputAvatar.setAttribute("type", "text");
   inputAvatar.setAttribute("placeholder", "avatar");
+  inputAvatar.setAttribute("required", "required");
   forme.appendChild(inputAvatar)
 
   inputAvatar.addEventListener("click", () => {
@@ -150,24 +176,27 @@ function addData() {
   forme.appendChild(buttonSav);
   forme.appendChild(buttonCancel);
   inputName.addEventListener("input", (e) => {
-    name = e.target.value;
+    name = e.target.value.trim();
   })
   inputEmail.addEventListener("input", (e) => {
-    email = e.target.value;
+    email = e.target.value.trim();
   })
   inputAvatar.addEventListener("input", (e) => {
-    avatar = e.target.value;
+    avatar = e.target.value.trim();
   })
   buttonSav.addEventListener("click", async (e) => {
-    e.preventDefault();
-    await postUser({ name, email, avatar });
-    const form = document.querySelector(".form_add");
-    app.removeChild(form)
-    name = "";
-    email = "";
-    avatar = "";
+    if (name != '' && email != '' && avatar != '') {
+      e.preventDefault();
+      await postUser({ name, email, avatar });
+      const form = document.querySelector(".form_add");
+      app.removeChild(form)
+      name = "";
+      email = "";
+      avatar = "";
 
-    await creatCard();
+      await creatCard();
+    }
+
   })
 
 }
