@@ -1,29 +1,13 @@
 import './style.css'
-import { postUser } from './lib/crud';
+import { creatButtonSA, fetchUser, fetchUsers, postUser } from './lib/crud';
 const app = document.querySelector("#app");
 let name = "";
 let email = "";
 let avatar = "";
 
 //funtion featch data
-const fetchUsers = async () => {
-  try {
-    const userData = await fetch('http://localhost:4400/users');
-    return await userData.json();
 
-  } catch (error) {
-    console.error("Error fetching user", error)
-  }
-}
 let allUsers = await fetchUsers();
-
-function creatButtonSA(type, classeName, content) {
-  const btn = document.createElement("button");
-  btn.classList.add(classeName);
-  btn.setAttribute("type", type)
-  btn.textContent = content;
-  return btn
-}
 
 function creatButton() {
   const cardContainer = document.querySelector(".card_container")
@@ -84,14 +68,6 @@ const creatCard = async () => {
 
 creatCard();
 
-const fetchUser = async (idTofetch) => {
-  try {
-    const res = await fetch(`http://localhost:4400/users/${idTofetch}`)
-    return await res.json();
-  } catch (error) {
-    console.error("Error fetching user", error)
-  }
-}
 //funtio info
 const userProfil = async (user) => {
   const containerProfil = document.createElement("div");
