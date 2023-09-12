@@ -1,6 +1,9 @@
 import './style.css'
-
+import { postUser } from './lib/crud';
 const app = document.querySelector("#app");
+let name = "";
+let email = "";
+let avatar = "";
 
 //funtion featch data
 const fetchUsers = async () => {
@@ -12,15 +15,36 @@ const fetchUsers = async () => {
     console.error("Error fetching user", error)
   }
 }
-const allUsers = await fetchUsers();
+let allUsers = await fetchUsers();
 
+function creatButtonSA(type, classeName, content) {
+  const btn = document.createElement("button");
+  btn.classList.add(classeName);
+  btn.setAttribute("type", type)
+  btn.textContent = content;
+  return btn
+}
 
+function creatButton() {
+  const cardContainer = document.querySelector(".card_container")
+  const creat = document.createElement("div");
+  creat.classList.add("card_btn");
+  cardContainer.prepend(creat);
+  const button_creat = creatButtonSA("button", "button_creat", "Creat");
+  creat.appendChild(button_creat);
+  button_creat.addEventListener("click", () => {
+    app.removeChild(cardContainer);
+    addData()
+  })
+}
 
 //fonction creat Card
 const creatCard = async () => {
+  allUsers = await fetchUsers()
   const cardContainer = document.createElement("div");
   cardContainer.setAttribute("class", "card_container");
   app.appendChild(cardContainer);
+
   for (let i = 0; i < allUsers.length; i++) {
     const nameUser = allUsers[i].name;
     const avartUser = allUsers[i].avatar;
@@ -55,6 +79,7 @@ const creatCard = async () => {
       const profil = await userProfil(user);
     })
   }
+  creatButton()
 }
 
 creatCard();
@@ -106,4 +131,67 @@ const userProfil = async (user) => {
     app.removeChild(containerProfil);
     await creatCard();
   })
+}
+
+
+function addData() {
+  const forme = document.createElement("form");
+  forme.classList.add("form_add")
+  app.appendChild(forme);
+
+  const inputFile = document.createElement("input");
+  inputFile.classList.add("input_file")
+  inputFile.setAttribute("type", "file");
+  inputFile.setAttribute("accept", "image/*");
+
+
+  forme.appendChild(inputFile)
+
+  const inputName = document.createElement("input");
+  inputName.classList.add("input_name")
+  inputName.setAttribute("type", "text");
+  inputName.setAttribute("placeholder", "name");
+  forme.appendChild(inputName)
+
+  const inputEmail = document.createElement("input");
+  inputEmail.classList.add("input_email")
+  inputEmail.setAttribute("type", "email");
+  inputEmail.setAttribute("placeholder", "email");
+  forme.appendChild(inputEmail)
+
+  const inputAvatar = document.createElement("input");
+  inputAvatar.classList.add("input_avata")
+  inputAvatar.setAttribute("type", "text");
+  inputAvatar.setAttribute("placeholder", "avatar");
+  forme.appendChild(inputAvatar)
+
+  inputAvatar.addEventListener("click", () => {
+
+  })
+
+  const buttonSav = creatButtonSA("submit", "btn-save", "Save");
+  const buttonCancel = creatButtonSA("button", "btn-cancel", "Cancel");
+  forme.appendChild(buttonSav);
+  forme.appendChild(buttonCancel);
+  inputName.addEventListener("input", (e) => {
+    name = e.target.value;
+  })
+  inputEmail.addEventListener("input", (e) => {
+    email = e.target.value;
+  })
+  inputAvatar.addEventListener("input", (e) => {
+    avatar = e.target.value;
+  })
+  buttonSav.addEventListener("click", async (e) => {
+    e.preventDefault();
+    await postUser({ name, email, avatar });
+    const form = document.querySelector(".form_add");
+    app.removeChild(form)
+    name = "";
+    email = "";
+    avatar = "";
+
+    await creatCard();
+  })
+
 }

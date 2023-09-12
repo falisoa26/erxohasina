@@ -30,6 +30,14 @@
     animation: animate 0.9s ease-in-out;
 }
 
+.card_btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    grid-column: span 3;
+    padding: 10px 0;
+}
+
 figure {
     width: 110px;
     height: 110px;
@@ -53,7 +61,7 @@ figure>img {
 
 .card:hover {
     cursor: pointer;
-    background-color: #a4a4a4;
+    background-color: #bbb8b8;
     color: white;
 }
 
@@ -113,6 +121,16 @@ figure>img {
     color: white;
 }
 
+.button_creat {
+    border: none;
+    background-color: rgb(6, 121, 245);
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
 .card_container p,
 .card_container figure,
 .card_container img,
@@ -140,4 +158,63 @@ figure>img {
     100% {
         transform: scale(1);
     }
+}
+
+.form_add {
+    padding: 20px 100px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.input_email,
+.input_avata {
+    grid-column: 2;
+    margin-bottom: 20px;
+}
+
+input {
+    height: 30px;
+    padding-left: 10px;
+}
+
+.input_file {
+    font-family: sans-serif;
+    font-size: 16px;
+    border-radius: 50px;
+    border: 2px solid black;
+    max-width: 400px;
+    padding: 2px;
+    height: 46px;
+}
+
+.input_file::-webkit-file-upload-button {
+    background: black;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.input_file::-webkit-input-placeholder {}
+
+.btn-save,
+.btn-cancel {
+    max-width: 70px;
+    border: none;
+    height: 30px;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-save {
+    margin-left: 10px;
+    background-color: green;
+
+}
+
+.btn-cancel {
+    background-color: red;
 }
