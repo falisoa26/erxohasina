@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 @import url('./style/button.css');
 @import url('./style/form.css');
-=======
-@import url('./styles/_card.css');
->>>>>>> c9a9cd0819344f33887929e198784db39189e2bc
 
 * {
     margin: 0;
@@ -12,7 +8,6 @@
 }
 
 
-<<<<<<< HEAD
 .card_container {
     width: 100%;
     display: grid;
@@ -41,8 +36,6 @@
 .card:hover {
     animation: animate 0.9s ease-in-out;
 }
-=======
->>>>>>> c9a9cd0819344f33887929e198784db39189e2bc
 
 
 figure {
@@ -50,6 +43,7 @@ figure {
     height: 110px;
     border-radius: 50%;
     background-color: #fff;
+    pointer-events: none;
 }
 
 figure>img {
@@ -64,9 +58,8 @@ figure>img {
     flex-direction: column;
     gap: 10px;
     align-items: center;
+    pointer-events: none;
 }
-
-
 
 .container_profil {
     width: 100%;
@@ -112,10 +105,9 @@ figure>img {
     padding: 50px 30px;
 }
 
-
-
-
-
+.icon-delete svg {
+    pointer-events: none;
+}
 
 
 @keyframes animate {
@@ -138,41 +130,4 @@ figure>img {
     100% {
         transform: scale(1);
     }
-<<<<<<< HEAD
-=======
-}
-
-
-.btn-save,
-.btn-cancel {
-    max-width: 70px;
-    border: none;
-    height: 30px;
-    color: white;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.btn-save {
-    margin-left: 10px;
-    background-color: green;
-
-}
-
-.btn-cancel {
-    background-color: red;
-}
-
-.icon-container {
-    display: none;
-
-}
-
-.icon-container.hover {
-    display: block;
-    position: absolute;
-    top: 8px;
-    right: 8px;
->>>>>>> c9a9cd0819344f33887929e198784db39189e2bc
 }

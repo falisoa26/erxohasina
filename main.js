@@ -1,6 +1,6 @@
-import './style.css'
-import { creatButtonSA, fetchUser, fetchUsers, postUser } from './lib/crud';
-// import './lib/uptdateUser';
+import './style.css';
+import { creatButtonSA, fetchUser, fetchUsers, postUser, updateUser } from './lib';
+import { deleteUser } from './lib';
 const app = document.querySelector("#app");
 let name = "";
 let email = "";
@@ -59,28 +59,40 @@ const creatCard = async () => {
     bodyCard.setAttribute("class", "body_card");
     card_user.appendChild(bodyCard);
 
+    // icone delete 
+    const iconeDelete = document.createElement('div');
+    iconeDelete.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M4 7l16 0" />
+      <path d="M10 11l0 6" />
+      <path d="M14 11l0 6" />
+      <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+      <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+    </svg>`;
+    card_user.appendChild(iconeDelete);
+    iconeDelete.id = allUsers[i].id;
+    iconeDelete.classList.add('icon-delete');
+    iconeDelete.addEventListener('click', async (ev) => {
+      ev.stopPropagation();
+      const deletedUser = await deleteUser(ev.target.id)
+      app.removeChild(cardContainer);
+      await creatCard();
+    });
+
     const iconContainer = document.createElement('div');
-    iconContainer.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ballpen" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-    <path d="M14 6l7 7l-4 4"></path>
-    <path d="M5.828 18.172a2.828 2.828 0 0 0 4 0l10.586 -10.586a2 2 0 0 0 0 -2.829l-1.171 -1.171a2 2 0 0 0 -2.829 0l-10.586 10.586a2.828 2.828 0 0 0 0 4z"></path>
-    <path d="M4 20l1.768 -1.768"></path>
- </svg>`;
     iconContainer.classList.add('icon-container');
     card_user.appendChild(iconContainer);
-
-    card_user.addEventListener('mouseover', () => {
-      iconContainer.classList.add('hover');
-    });
-    card_user.addEventListener('mouseleave', () => {
-      iconContainer.classList.remove('hover');
-    });
-
     iconContainer.classList.add('edit-icon-container');
 
-    iconContainer.addEventListener('click', (ev) => {
+    iconContainer.addEventListener('click', async (ev) => {
       ev.stopPropagation();
-    })
+      const user = await fetchUser(e.target.id)
+      app.removeChild(cardContainer);
+      addData(user);
+    });
+
+
+
 
     for (let j = 0; j < 2; j++) {
       let paragraphe = document.createElement("p");
@@ -219,7 +231,7 @@ function addData(user) {
   buttonSav.addEventListener("click", async (e) => {
 
     if (user) {
-      await put(user.id, { name, email, avatar });
+      await updateUser(user.id, { name, email, avatar });
       const form = document.querySelector(".form_add");
       app.removeChild(form)
       name = "";
