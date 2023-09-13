@@ -1,54 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Leanne Graham",
-      "username": "Bret",
-      "email": "Sincere@april.biz",
-      "avatar": "https://reqres.in/img/faces/1-image.jpg",
-      "address": {
-        "street": "Kulas Light",
-        "suite": "Apt. 556",
-        "city": "Gwenborough",
-        "zipcode": "92998-3874",
-        "geo": {
-          "lat": "-37.3159",
-          "lng": "81.1496"
-        }
-      },
-      "phone": "1-770-736-8031 x56442",
-      "website": "hildegard.org",
-      "company": {
-        "name": "Romaguera-Crona",
-        "catchPhrase": "Multi-layered client-server neural-net",
-        "bs": "harness real-time e-markets"
-      }
-    },
-    {
-      "id": 2,
-      "name": "Ervin Howell",
-      "username": "Antonette",
-      "email": "Shanna@melissa.tv",
-      "avatar": "https://reqres.in/img/faces/2-image.jpg",
-      "address": {
-        "street": "Victor Plains",
-        "suite": "Suite 879",
-        "city": "Wisokyburgh",
-        "zipcode": "90566-7771",
-        "geo": {
-          "lat": "-43.9509",
-          "lng": "-34.4618"
-        }
-      },
-      "phone": "010-692-6593 x09125",
-      "website": "anastasia.net",
-      "company": {
-        "name": "Deckow-Crist",
-        "catchPhrase": "Proactive didactic contingency",
-        "bs": "synergize scalable supply-chains"
-      }
-    },
-    {
       "id": 3,
       "name": "Clementine Bauch",
       "username": "Samantha",
@@ -94,30 +46,6 @@
         "name": "Robel-Corkery",
         "catchPhrase": "Multi-tiered zero tolerance productivity",
         "bs": "transition cutting-edge web services"
-      }
-    },
-    {
-      "id": 5,
-      "name": "Chelsey Dietrich",
-      "username": "Kamren",
-      "email": "Lucio_Hettinger@annie.ca",
-      "avatar": "https://reqres.in/img/faces/5-image.jpg",
-      "address": {
-        "street": "Skiles Walks",
-        "suite": "Suite 351",
-        "city": "Roscoeview",
-        "zipcode": "33263",
-        "geo": {
-          "lat": "-31.8129",
-          "lng": "62.5342"
-        }
-      },
-      "phone": "(254)954-1289",
-      "website": "demarco.info",
-      "company": {
-        "name": "Keebler LLC",
-        "catchPhrase": "User-centric fault-tolerant solution",
-        "bs": "revolutionize end-to-end systems"
       }
     },
     {
@@ -247,34 +175,28 @@
       "id": 11
     },
     {
-      "name": "njaka",
+      "name": "njaka be",
       "email": "sgfdfgdrfg@gmail.com",
       "avatar": "https://scontent.fmjn1-1.fna.fbcdn.net/v/t39.30808-6/347251173_2014362778903354_7010357112409667887_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=1b51e3&_nc_eui2=AeFblwTX0iZ6XNRtja86QNwwXNfpdEGxHxxc1-l0QbEfHBpMWpdOGFTziBpRbmuUV1kMXSIyYlqBdcTit1QPTObv&_nc_ohc=yZiFPWEr1VsAX-24Vxi&_nc_ht=scontent.fmjn1-1.fna&oh=00_AfCZ5qMR2LSlUBNouE11Tb7d3mkVeBQqMOgCUtslE5U7mA&oe=6504CFDF",
       "id": 12
     },
     {
-      "name": "koto",
+      "name": "falisoa",
+      "email": "falisoa@gmail.com",
+      "avatar": "https://imgv3.fotor.com/images/slider-image/A-clear-close-up-photo-of-a-woman.jpg",
+      "id": 17
+    },
+    {
+      "name": "persi",
       "email": "dssdvsdv@gmail.om",
       "avatar": "https://scontent.ftmm2-1.fna.fbcdn.net/v/t1.6435-9/181120912_1433817326957905_6204037664469222172_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeHIF28spwvou4FnypCkZ8MNEsIlrzY5SycSwiWvNjlLJyflTGvGn9nFHMkf2I-PE4a_9zA_tfGlZUWK9bLXkUIA&_nc_ohc=CjxbPuJFcXQAX9vmNjr&_nc_ht=scontent.ftmm2-1.fna&oh=00_AfDTdRpMhe8NXBgeatdvkpglF8K4m-ndruW-b0zBD3YS8A&oe=6527895E",
-      "id": 13
+      "id": 18
     },
     {
-      "name": "",
-      "email": "",
-      "avatar": "",
-      "id": 14
-    },
-    {
-      "name": "",
-      "email": "",
-      "avatar": "",
-      "id": 15
-    },
-    {
-      "name": "",
-      "email": "",
-      "avatar": "",
-      "id": 16
+      "name": "lee ria",
+      "email": "lee@gmail.com",
+      "avatar": "https://fr.freepik.com/photos-gratuite/belle-photo-paysage-coucher-soleil-plage-ciel-clair_10990487.htm",
+      "id": 19
     }
   ],
   "products": []

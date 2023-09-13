@@ -83,7 +83,8 @@ const creatCard = async () => {
     btnEdit.addEventListener('click', async (e) => {
       e.stopPropagation();
       const user = await fetchUser(e.target.id)
-      console.log(user);
+      app.removeChild(cardContainer)
+      addData(user);
     });
 
   }
@@ -140,7 +141,7 @@ const userProfil = async (user) => {
 // }
 
 // fonction creat page formulaire
-function addData() {
+function addData(user) {
   const forme = document.createElement("form");
   forme.classList.add("form_add")
   app.appendChild(forme);
@@ -178,7 +179,7 @@ function addData() {
 
   })
 
-  const buttonSav = creatButtonSA("submit", "btn-save", "Save");
+  const buttonSav = creatButtonSA("submit", "btn-save", user ? "Save" : "creat");
   const buttonCancel = creatButtonSA("button", "btn-cancel", "Cancel");
   forme.appendChild(buttonSav);
   forme.appendChild(buttonCancel);
@@ -192,9 +193,9 @@ function addData() {
     avatar = e.target.value.trim();
   })
   buttonSav.addEventListener("click", async (e) => {
-    if (name != '' && email != '' && avatar != '') {
-      e.preventDefault();
-      await postUser({ name, email, avatar });
+
+    if (user) {
+      await put(user.id, { name, email, avatar });
       const form = document.querySelector(".form_add");
       app.removeChild(form)
       name = "";
@@ -203,7 +204,37 @@ function addData() {
 
       await creatCard();
     }
+    else {
+      if (name != '' && email != '' && avatar != '') {
+        e.preventDefault();
+        await postUser({ name, email, avatar });
+        const form = document.querySelector(".form_add");
+        app.removeChild(form)
+        name = "";
+        email = "";
+        avatar = "";
+
+        await creatCard();
+      }
+    }
 
   })
+
+  if (user) {
+    inputName.value = user.name;
+    inputEmail.value = user.email;
+    inputAvatar.value = user.avatar;
+    name = user.name;
+    email = user.email;
+    avatar = user.avatar;
+
+
+  }
+  buttonCancel.addEventListener("click", () => {
+    app.removeChild(forme)
+    creatCard();
+  })
+
+
 
 }
