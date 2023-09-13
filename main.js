@@ -6,7 +6,7 @@ let name = "";
 let email = "";
 let avatar = "";
 
-//funtion featch data
+//funtion featch all data
 
 let allUsers = await fetchUsers();
 
@@ -80,9 +80,10 @@ const creatCard = async () => {
     card_user.addEventListener('mouseleave', () => {
       btnEdit.classList.remove("hover");
     });
-    btnEdit.addEventListener('click', (e) => {
+    btnEdit.addEventListener('click', async (e) => {
       e.stopPropagation();
-      console.log(btnEdit.id);
+      const user = await fetchUser(e.target.id)
+      console.log(user);
     });
 
   }
@@ -91,7 +92,7 @@ const creatCard = async () => {
 
 creatCard();
 
-//funtio info
+//funtion show info user
 const userProfil = async (user) => {
   const containerProfil = document.createElement("div");
   containerProfil.classList.add("container_profil");
@@ -131,8 +132,14 @@ const userProfil = async (user) => {
     await creatCard();
   })
 }
+//function creat input
+// const creatInput = (classeName, type, placeholder) => {
+//   const inputFile = document.createElement("input");
+//   inputFile.classList.add(classeName)
 
+// }
 
+// fonction creat page formulaire
 function addData() {
   const forme = document.createElement("form");
   forme.classList.add("form_add")
