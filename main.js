@@ -1,6 +1,6 @@
 import './style.css'
-import { creatButtonSA, fetchUser, fetchUsers, postUser } from './lib/post';
-import { put } from './lib/updatUser';
+import { creatButtonSA, fetchUser, fetchUsers, postUser } from './lib/crud';
+// import './lib/uptdateUser';
 const app = document.querySelector("#app");
 let name = "";
 let email = "";
@@ -58,6 +58,30 @@ const creatCard = async () => {
     const bodyCard = document.createElement("div");
     bodyCard.setAttribute("class", "body_card");
     card_user.appendChild(bodyCard);
+
+    const iconContainer = document.createElement('div');
+    iconContainer.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ballpen" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M14 6l7 7l-4 4"></path>
+    <path d="M5.828 18.172a2.828 2.828 0 0 0 4 0l10.586 -10.586a2 2 0 0 0 0 -2.829l-1.171 -1.171a2 2 0 0 0 -2.829 0l-10.586 10.586a2.828 2.828 0 0 0 0 4z"></path>
+    <path d="M4 20l1.768 -1.768"></path>
+ </svg>`;
+    iconContainer.classList.add('icon-container');
+    card_user.appendChild(iconContainer);
+
+    card_user.addEventListener('mouseover', () => {
+      iconContainer.classList.add('hover');
+    });
+    card_user.addEventListener('mouseleave', () => {
+      iconContainer.classList.remove('hover');
+    });
+
+    iconContainer.classList.add('edit-icon-container');
+
+    iconContainer.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+    })
+
     for (let j = 0; j < 2; j++) {
       let paragraphe = document.createElement("p");
       bodyCard.appendChild(paragraphe);

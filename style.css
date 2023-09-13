@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 @import url('./style/button.css');
 @import url('./style/form.css');
+=======
+@import url('./styles/_card.css');
+>>>>>>> c9a9cd0819344f33887929e198784db39189e2bc
 
 * {
     margin: 0;
@@ -8,6 +12,7 @@
 }
 
 
+<<<<<<< HEAD
 .card_container {
     width: 100%;
     display: grid;
@@ -36,14 +41,9 @@
 .card:hover {
     animation: animate 0.9s ease-in-out;
 }
+=======
+>>>>>>> c9a9cd0819344f33887929e198784db39189e2bc
 
-.card_btn {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    grid-column: span 3;
-    padding: 10px 0;
-}
 
 figure {
     width: 110px;
@@ -66,11 +66,7 @@ figure>img {
     align-items: center;
 }
 
-.card:hover {
-    cursor: pointer;
-    background-color: #bbb8b8;
-    color: white;
-}
+
 
 .container_profil {
     width: 100%;
@@ -120,12 +116,7 @@ figure>img {
 
 
 
-.card_container p,
-.card_container figure,
-.card_container img,
-.card_container .body_card {
-    pointer-events: none;
-}
+
 
 @keyframes animate {
     0% {
@@ -147,4 +138,41 @@ figure>img {
     100% {
         transform: scale(1);
     }
+<<<<<<< HEAD
+=======
+}
+
+
+.btn-save,
+.btn-cancel {
+    max-width: 70px;
+    border: none;
+    height: 30px;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-save {
+    margin-left: 10px;
+    background-color: green;
+
+}
+
+.btn-cancel {
+    background-color: red;
+}
+
+.icon-container {
+    display: none;
+
+}
+
+.icon-container.hover {
+    display: block;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+>>>>>>> c9a9cd0819344f33887929e198784db39189e2bc
 }
