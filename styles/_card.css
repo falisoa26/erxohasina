@@ -48,3 +48,7 @@
 .card {
     position: relative;
 }
+
+.icone-delete svg {
+    pointer-events: none;
+}
